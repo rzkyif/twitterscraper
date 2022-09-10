@@ -11,7 +11,20 @@ USE FOR TESTING PURPOSES ONLY.
 
 ## Usage
 
-    python main.py
+1. (Optional) Set up and activate a virtual environment
+   
+        python -m venv venv
+        . venv/Scripts/Activate
+
+2. Install Python requirements
+
+        pip install -r requirements.txt
+
+3. Start the program
+
+        python main.py
+
+4. Enter the required parameters in the program
 
 ## Issues
 
