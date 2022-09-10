@@ -92,7 +92,10 @@ def main():
         tweets = timeline.find_elements(By.CSS_SELECTOR, '[data-testid=tweet]')
         for tweet in tweets:
 
-          tweet_texts = tweet.find_elements(By.CSS_SELECTOR, '[data-testid=tweetText]>:first-child')
+          try:
+            tweet_texts = tweet.find_elements(By.CSS_SELECTOR, '[data-testid=tweetText]>:first-child')
+          except:
+            continue
 
           if len(tweet_texts) < 1: continue # handles tweets with no text
 
@@ -101,8 +104,11 @@ def main():
 
           if tweet_hash == 0 or tweet_hash in scraped_tweets.keys(): continue # handles tweets that are empty or detected multiple times
 
-          tweet_user = tweet.find_element(By.CSS_SELECTOR, '[data-testid=User-Names]>:nth-child(2)>:first-child>:first-child>:first-child').text[1:]
-          date = tweet.find_element(By.CSS_SELECTOR, '[data-testid=User-Names]>:nth-child(2)>:first-child>:nth-child(3)>:first-child').text
+          try:
+            tweet_user = tweet.find_element(By.CSS_SELECTOR, '[data-testid=User-Names]>:nth-child(2)>:first-child>:first-child>:first-child').text[1:]
+            date = tweet.find_element(By.CSS_SELECTOR, '[data-testid=User-Names]>:nth-child(2)>:first-child>:nth-child(3)>:first-child').text
+          except:
+            continue
 
           scraped_tweets[tweet_hash] = {
             'user': tweet_user,
