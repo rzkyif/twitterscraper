@@ -12,9 +12,18 @@ USE FOR TESTING PURPOSES ONLY.
 ## Usage
 
 1. (Optional) Set up and activate a virtual environment
+
+    Windows and Linux:
    
-        python -m venv venv
-        . venv/Scripts/Activate
+        python -m venv .venv
+
+    Windows:
+
+        . .venv/Scripts/Activate
+
+    Linux:
+
+        . .venv/bin/activate
 
 2. Install Python requirements
 
