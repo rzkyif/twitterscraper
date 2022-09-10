@@ -97,14 +97,14 @@ def main():
           if len(tweet_texts) < 1: continue # handles tweets with no text
 
           tweet_text = tweet_texts[0].text
-          textHash = hash(tweet_text)
+          tweet_hash = hash(tweet_text)
 
-          if textHash == 0 or textHash in scraped_tweets.keys(): continue # handles tweets that are empty or detected multiple times
+          if tweet_hash == 0 or tweet_hash in scraped_tweets.keys(): continue # handles tweets that are empty or detected multiple times
 
           tweet_user = tweet.find_element(By.CSS_SELECTOR, '[data-testid=User-Names]>:nth-child(2)>:first-child>:first-child>:first-child').text[1:]
           date = tweet.find_element(By.CSS_SELECTOR, '[data-testid=User-Names]>:nth-child(2)>:first-child>:nth-child(3)>:first-child').text
 
-          scraped_tweets[hash(tweet_text)] = {
+          scraped_tweets[tweet_hash] = {
             'user': tweet_user,
             'date': date,
             'tweet': tweet_text
